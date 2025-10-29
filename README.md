@@ -94,5 +94,3 @@ This project successfully demonstrated the deployment, configuration, and practi
     * Accurate agent configuration (log sources, manager IP) is critical for data collection.
     * Sufficient server resources (especially RAM) are vital for Wazuh's analysis and correlation capabilities.
     * Troubleshooting often involves checking configurations on both the agent and manager, verifying log flow, and understanding rule/decoder dependencies.
-
-Wazuh provides comprehensive, open-source endpoint visibility and detection, making it a valuable tool for security operations.

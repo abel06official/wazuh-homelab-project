@@ -18,8 +18,7 @@ A simple virtual network was established using [VirtualBox NAT Network / VMware 
 1.  **Wazuh Server VM:** Hosted on Ubuntu Server (`IP: 192.168.1.28`), running the Wazuh Manager, Indexer, and Dashboard. Allocated [4/8] GB RAM and 2 CPU Cores.
 2.  **Kali Linux Agent VM:** The monitored endpoint running Kali Linux(`IP: 192.168.1.27`), with the Wazuh agent installed. Allocated [2/4] GB RAM and 2 CPU Cores.
 
-``
-``
+![Screenshot](images/screenshot0.png)
 
 ---
 
@@ -56,7 +55,6 @@ A simple virtual network was established using [VirtualBox NAT Network / VMware 
 * **Simulation:** Created, modified, and deleted a test file (`/etc/sudoers.d/test_fim`) in a sensitive directory monitored by default FIM policies.
 * **Result:** Wazuh immediately generated alerts for file creation, modification, and deletion, visible under **Modules > Integrity monitoring**.
 
-`[Screenshot: FIM alert showing file modification/creation/deletion in Wazuh]`
 
 ### b) Authentication Brute Force Simulation
 * **Simulation:** Executed multiple failed `su - root` attempts rapidly on the Kali agent to simulate a brute force attack.
@@ -67,7 +65,6 @@ A simple virtual network was established using [VirtualBox NAT Network / VMware 
 * **Troubleshooting Note:** Initial attempts failed to generate alerts. Investigation revealed the default agent config (`ossec.conf`) wasn't monitoring the system journal (where Kali logs auth events). The configuration was corrected by replacing the `/var/log/auth.log` entry with the appropriate `<wodle name="logcollector">` block for `systemd` / `journald`. Agent re-enrollment (deleting `client.keys` and restarting) was also required due to prior config errors.
 * **Result:** After fixes, Wazuh successfully detected the repeated failures and generated the high-level **Brute Force alert** (Rule ID **60121**).
 
-`[Screenshot: Brute Force alert (Rule ID 60121) in Wazuh Dashboard]`
 
 ### c) Malware Signature Detection (EICAR)
 * **Simulation:** Created the standard EICAR test signature file (`eicar_simple`) in the agent's home directory (`/home/kali`).
@@ -77,7 +74,6 @@ A simple virtual network was established using [VirtualBox NAT Network / VMware 
 * **Troubleshooting Note:** Detection initially failed. The `ossec.conf` file on the agent required adding `<directories check_all="yes">/home/kali</directories>` within the `<syscheck>` block to explicitly monitor the home directory and enable signature checking.
 * **Result:** Following configuration adjustment and agent restart, Wazuh's FIM/Rootcheck correctly identified the EICAR signature, triggering **Rule ID 80705**.
 
-`[Screenshot: EICAR detection alert (Rule 80705) in Wazuh Dashboard]`
 
 ---
 

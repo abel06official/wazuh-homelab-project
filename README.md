@@ -30,7 +30,9 @@ A simple virtual network was established using [VirtualBox NAT Network / VMware 
 * Used the official Wazuh installation script (`wazuh-install.sh -a`) for an all-in-one deployment (Manager, Indexer, Dashboard).
 * Confirmed successful installation by accessing the Wazuh Dashboard via web browser (`https://192.168.1.28`).
 
-`[Screenshot: Wazuh Dashboard Login Page]`
+![Screenshot: Wazuh Dashboard Login Page](images/Screenshot1.png)
+
+![Screenshot: Wazuh Dashboard Login Page](images/Screenshot2.png)
 
 ### 2. Wazuh Agent Deployment (Kali Linux)
 * Configured the Kali Linux VM as the target endpoint.
@@ -44,7 +46,7 @@ A simple virtual network was established using [VirtualBox NAT Network / VMware 
     ```
 * Verified the agent connection in the Wazuh Dashboard (Modules > Agents), confirming `kali-linux01` status as "Active".
 
-`[Screenshot: Wazuh Agents view showing 'kali-linux01' as Active]`
+![Screenshot: Wazuh Agents view showing 'kali-linux01' as Active](images/Screenshot3.png)
 
 ---
 

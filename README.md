@@ -11,18 +11,18 @@
 
 ---
 
-## Lab Architecture 🏗️
+## Lab Architecture
 
 A simple virtual network was established using [VirtualBox NAT Network / VMware NAT] connecting two core components:
 
 1.  **Wazuh Server VM:** Hosted on Ubuntu Server (`IP: 192.168.1.28`), running the Wazuh Manager, Indexer, and Dashboard. Allocated [4/8] GB RAM and 2 CPU Cores.
 2.  **Kali Linux Agent VM:** The monitored endpoint running Kali Linux(`IP: 192.168.1.27`), with the Wazuh agent installed. Allocated [2/4] GB RAM and 2 CPU Cores.
 
-![Screenshot](images/screenshot0.png)
+![Screenshot](images/screenshot4.png)
 
 ---
 
-## Deployment & Configuration Walkthrough 🚶‍♂️
+## Deployment & Configuration Walkthrough
 
 ### 1. Wazuh Server Setup
 * Deployed Ubuntu Server 22.04 LTS in a VM.
@@ -49,7 +49,7 @@ A simple virtual network was established using [VirtualBox NAT Network / VMware 
 
 ---
 
-## Simulated Detections & Results 🎯
+## Simulated Detections & Results
 
 ### a) File Integrity Monitoring (FIM)
 * **Simulation:** Created, modified, and deleted a test file (`/etc/sudoers.d/test_fim`) in a sensitive directory monitored by default FIM policies.
@@ -77,7 +77,7 @@ A simple virtual network was established using [VirtualBox NAT Network / VMware 
 
 ---
 
-## Conclusion & Key Learnings 📝
+## Conclusion & Key Learnings
 
 This project successfully demonstrated the deployment, configuration, and practical application of Wazuh for endpoint security monitoring in a controlled lab environment.
 
